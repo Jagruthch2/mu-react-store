@@ -1,12 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import {useContext} from 'react';
+import {AppContext} from './App';
 export default function Login() {
+  const {user,setUser,users} =useContext(AppContext);
+  const handleSubmit=()=>{
+    users.map((user))
+  }
   return (
     <div>
       <h2>Login Form</h2>
       <p><input type="text" /></p>
       <p><input type="password" /></p>
-      <p><button>Login</button></p>
+      <p><button onClick>Login</button></p>
+      <p><button onClick={handleSubmit}>Submit</button></p>
       <hr />
       <p>
         <Link to="/register">Create Account</Link>

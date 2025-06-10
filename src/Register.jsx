@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState,useContext } from "react";
+import {AppContext} from "./App";
 export default function Register() {
-  const [user, setUser] = useState({});
+  const {user,setUser,users,setUsers}=useContext(AppContext);
   const [count, setCount] = useState(0);
   const [submitData,setsubmitData]=useState(null);
   const [a, setA] = useState(0);
@@ -18,8 +19,15 @@ export default function Register() {
   const findSum = () => {
     setResult(Number(a) + Number(b));
   };
+  const handleRegisterSubmit=()=>{
+    console.log(user.name,user.email);
+    setUsers([...users,user]);
+    console.log(users);
+  }
   let submitContent;
   if(submitData){
+    console.log(submitData.name,submitData.email);
+    setUsers([...users,user]);
     submitContent=(
         <div>
             <h3>User Info</h3>
@@ -53,7 +61,8 @@ export default function Register() {
         />
       </p>
       <p>
-        <button onClick={()=>{setsubmitData(user)}}>Submit</button>
+        {/* <button onClick={()=>{setsubmitData(user)}}>Submit</button> */}
+        <button onClick={handleRegisterSubmit}>Submit</button>
       </p>
       <p>{submitContent}</p>
       <hr />
