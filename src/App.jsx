@@ -8,6 +8,7 @@ import Home from './Home';
 import Login from'./Login';
 import Register from './Register';
 import Cart from './Cart';
+import Logout from './Logout'
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 export const AppContext=createContext();
 function App() {
@@ -28,6 +29,7 @@ function App() {
           <Route path="/login" element={<Login />}></Route>
           <Route path="/register" element={<Register />}></Route>
           <Route path="/cart" element={<Cart />}></Route>
+          <Route path="/logout" element={<Logout />}></Route>
         </Routes>
         <Footer />
       </BrowserRouter>
