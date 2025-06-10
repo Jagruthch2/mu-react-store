@@ -7,15 +7,19 @@ import Footer from './Footer';
 import Home from './Home';
 import Login from'./Login';
 import Register from './Register';
+import Cart from './Cart';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 export const AppContext=createContext();
 function App() {
   // const [user, setUser] = useState({});
   const [users, setUsers]=useState([]);
+  const [cart, setCart]=useState({});
+  const [email,setEmail]=useState();
+  const [login,setLogin]=useState(false);
   return (
     <div>
       {/* <AppContext.Provider value={{user,setUser,users,setUsers}}> */}
-      <AppContext.Provider value={{users,setUsers}}>
+      <AppContext.Provider value={{users,setUsers,cart,setCart,cart,setCart,email,setEmail,login,setLogin}}>
       <BrowserRouter>
         <Header name="Mu-react-store"/>
         <Routes>
@@ -23,11 +27,11 @@ function App() {
           <Route path="/" element={<Home />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/register" element={<Register />}></Route>
+          <Route path="/cart" element={<Cart />}></Route>
         </Routes>
         <Footer />
       </BrowserRouter>
       </AppContext.Provider>
-
     </div>
   );
 }

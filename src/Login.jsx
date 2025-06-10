@@ -4,7 +4,7 @@ import {useState} from 'react';
 import {useContext} from 'react';
 import {AppContext} from './App';
 export default function Login() {
-  const {users} =useContext(AppContext);
+  const {users,email,setEmail,login,setLogin} =useContext(AppContext);
   const [user,setUser]=useState({});
   const [error,setError]=useState();
   const Navigate=useNavigate();
@@ -14,6 +14,8 @@ export default function Login() {
     if(!found){
       setError("Access Denied");
     }else{
+      setEmail(user.email);
+      setLogin(true);
       Navigate("/");
     }
   }
