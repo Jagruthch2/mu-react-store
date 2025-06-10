@@ -14,7 +14,7 @@ export default function Cart() {
         }
     }
     const handleLogin=()=>{
-        Navigate("/");
+        Navigate("/login");
     }
   return (
     <div>
