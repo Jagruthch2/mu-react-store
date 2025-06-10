@@ -4,25 +4,30 @@ import { useState } from "react";
 export default function Register() {
   const [user, setUser] = useState({});
   const [count, setCount] = useState(0);
+  const [submitData,setsubmitData]=useState(null);
+  const [a, setA] = useState(0);
+  const [b, setB] = useState(0);
+  const [result, setResult] = useState();
   const handleClick = () => {
-      alert("Hello World");
-    };
-    const updateCount = () => {
-        setCount(count + 1);
-    };
-    const [num,setNum]=useState(0);
-    const plusNum=()=>{
-        setNum(num+1);
-    }
-    const minusNum=()=>{
-        setNum(num-1);
-    }
-    const[num1,setNum1]=useState(0);
-    const[num2,setNum2]=useState(0);
-    const[res,setRes]=useState(0);
-    const sum=()=>{
-        setRes(num1+num2);
-    }
+    alert("Hello World");
+  };
+  const updateCount = () => {
+    setCount(count + 1);
+  };
+
+  const findSum = () => {
+    setResult(Number(a) + Number(b));
+  };
+  let submitContent;
+  if(submitData){
+    submitContent=(
+        <div>
+            <h3>User Info</h3>
+            <p>Name:{submitData.name}</p>
+            <p>Email:{submitData.email}</p>
+        </div>
+    )
+  }
   return (
     <div>
       <h2>Register</h2>
@@ -48,33 +53,30 @@ export default function Register() {
         />
       </p>
       <p>
-        <button>Submit</button>
+        <button onClick={()=>{setsubmitData(user)}}>Submit</button>
       </p>
+      <p>{submitContent}</p>
       <hr />
       <p>
-        <Link to="/login">Aready a member? Login Here...</Link>
+        <Link to="/login">Already a member? Login Here...</Link>
       </p>
       <hr />
       <button onClick={handleClick}>Click</button>
       <hr />
       <p>
-        {count}<br></br>
+        {count}
+        <br></br>
         <button onClick={updateCount}>Update Count</button>
       </p>
       <hr />
       <p>
-        <button onClick={minusNum}>-</button>
-        {num}
-        <button onClick={plusNum}>+</button>
+        <input type="number" onChange={(e) => setA(e.target.value)} />
       </p>
-      <hr />
       <p>
-        <input type="number" onChange={(e) => setNum1(Number(e.target.value))}
-        placeholder="Enter number1" />
-        <input type="number" onChange={(e) => setNum2(Number(e.target.value))} placeholder="Enter number2" />
-        <button onClick={sum}>Sum</button>
-        <p>Sum:{res}</p>
+        <input type="number" onChange={(e) => setB(e.target.value)} />
       </p>
+      <button onClick={findSum}>Submit</button>
+      <p>{result}</p>
     </div>
   );
 }
