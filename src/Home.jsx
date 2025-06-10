@@ -14,14 +14,14 @@ export default function Home() {
       name: "Product 2",
       desc: "This is the description of the product",
       price: 50,
-      imgUrl: "https://picsum.photos/id/1/300/300",
+      imgUrl: "https://picsum.photos/id/2/300/300",
     },
     {
       id: 3,
       name: "Product 3",
       desc: "This is the description of the product",
       price: 75,
-      imgUrl: "https://picsum.photos/id/1/300/300",
+      imgUrl: "https://picsum.photos/id/3/300/300",
     },
   ];
 
