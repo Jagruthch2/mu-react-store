@@ -3,7 +3,7 @@ import {AppContext} from './App'
 import {useState,useContext} from 'react'
 import {useNavigate } from 'react-router-dom';
 export default function Cart() {
-    const {cart,setCart,email}=useContext(AppContext);
+    const {cart,setCart,email,orders,setOrders}=useContext(AppContext);
     const Navigate=useNavigate();
     const incrementQty=()=>{
         setCart({...cart,qty:cart.qty+1});
@@ -15,6 +15,11 @@ export default function Cart() {
     }
     const handleLogin=()=>{
         Navigate("/login");
+    }
+    const placeOrder=()=>{
+        setOrders([...orders,cart]);
+        setCart({});
+        Navigate("/order");
     }
   return (
     <div>
@@ -32,7 +37,7 @@ export default function Cart() {
         <h2>Order Value:{cart.price*cart.qty}</h2>
         <hr />
         <p>
-            {email?<button>Place order</button>:<button onClick={handleLogin}>Login to order</button>}
+            {email?<button onClick={placeOrder}>Place order</button>:<button onClick={handleLogin}>Login to order</button>}
         </p>
     </div>
   )

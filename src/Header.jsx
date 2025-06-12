@@ -12,7 +12,8 @@ export default function Header({name}) {
             <ul>
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/cart">Cart</Link></li>
-                <li>{login?<p><Link to="/logout">Logout</Link></p>:<Link to="/login">Login</Link>}</li>
+                <li>
+                  {login?<p><Link to="/logout">Logout</Link><Link to="/order">Order</Link></p>:<Link to="/login">Login</Link>}</li>
             </ul>
         </div>
     </div>
